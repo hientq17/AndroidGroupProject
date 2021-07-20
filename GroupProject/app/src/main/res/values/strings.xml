@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">GroupProject</string>
+
+    <string name="filter_prompt">Chọn loại sắp xếp</string>
+
+    <string-array name="filter_sort_arrays">
+        <item>Giá tiền</item>
+        <item>Gái tiền 2</item>
+    </string-array>
+
+    <string-array name="filter_type_arrays">
+        <item>Phòng trọ cho thuê</item>
+        <item>Căn hộ cho thuê</item>
+    </string-array>
+
+
+    <string-array name="filter_status_arrays">
+        <item>Còn phòng</item>
+        <item>Hết phòng</item>
+    </string-array>
 </resources>
