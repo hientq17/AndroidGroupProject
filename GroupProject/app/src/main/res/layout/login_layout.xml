@@ -8,7 +8,7 @@
         android:id="@+id/txtHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đăng Nhập"
+        android:text="Đăng nhập"
         android:textColor="#4FBBD5"
         android:textSize="75px"
         android:textStyle="bold"
