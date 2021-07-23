@@ -1,4 +1,4 @@
-package edu.fpt.groupproject;
+package edu.fpt.groupproject.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.fpt.groupproject.R;
 import edu.fpt.groupproject.adapter.MessageRecyclerViewAdapter;
 import edu.fpt.groupproject.api.IApiMessage;
 import edu.fpt.groupproject.model.message.MessageDetail;

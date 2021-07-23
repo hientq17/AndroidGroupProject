@@ -6,6 +6,28 @@ const isValidModel = require("../utils/model-filter")
 
 const apiRoom= function (dbConnection) {
     return {
+        getListAllRooms: (req,res) => {
+            dbConnection.query(storeProcedureName().getListAllRooms(),null, (err, response) => {
+                if (err) res.json(err)
+                else{
+                    if(response[0].length > 0)
+                         res.json(response[0])
+                    else
+                        res.json("Not found")
+                }
+            })
+        },
+        getTopRooms: (req,res) => {
+            dbConnection.query(storeProcedureName().getTopRooms(),null, (err, response) => {
+                if (err) res.json(err)
+                else{
+                    if(response[0].length > 0)
+                         res.json(response[0])
+                    else
+                        res.json("Not found")
+                }
+            })
+        },
         getListRoomsByAuthor: (req, res) => {
             dbConnection.query(storeProcedureName().getListRoomsByAuthor(),[req.query.author], (err, response) => {
                 if (err) res.json(err)

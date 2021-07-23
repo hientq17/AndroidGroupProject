@@ -1,4 +1,4 @@
-package edu.fpt.groupproject;
+package edu.fpt.groupproject.activity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.fpt.groupproject.R;
 import edu.fpt.groupproject.adapter.MessageRecyclerViewAdapter;
 import edu.fpt.groupproject.api.IApiMessage;
 import edu.fpt.groupproject.model.message.MessageDetail;

@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/exit" />
 
     <TextView
-        android:id="@+id/btnHome"
+        android:id="@+id/txtTitle"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginStart="96dp"
@@ -43,7 +43,7 @@
         android:layout_marginRight="167dp"
         android:background="@null"
         android:gravity="center"
-        android:text="Phòng trọ quanh đây"
+        android:text="Phòng trọ mới nhất"
         android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,13 +80,31 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:srcCompat="@drawable/home" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="360dp"
+        android:layout_height="220dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView6" />
+        app:layout_constraintTop_toBottomOf="@id/textView6">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listRooms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView6" />
+        </LinearLayout>
+    </ScrollView>
+
+
 
     <View
         android:id="@+id/view"
@@ -104,20 +122,20 @@
         android:layout_height="30dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="875dp"
+        android:layout_marginTop="15dp"
         android:background="@null"
         android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
         app:srcCompat="@drawable/home_1" />
 
     <Button
-        android:id="@+id/txtBtnHome"
+        android:id="@+id/btnHome"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="910dp"
+        android:layout_marginTop="45dp"
         android:background="@null"
         android:backgroundTint="@android:color/transparent"
         android:gravity="center"
@@ -126,7 +144,7 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <ImageButton
         android:id="@+id/imgBtnSearch"
@@ -134,20 +152,20 @@
         android:layout_height="30dp"
         android:layout_marginStart="140dp"
         android:layout_marginLeft="140dp"
-        android:layout_marginTop="875dp"
+        android:layout_marginTop="15dp"
         android:background="@null"
         android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
         app:srcCompat="@drawable/loupe" />
 
     <Button
-        android:id="@+id/txtBtnSearch"
+        android:id="@+id/btnSearch"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginStart="110dp"
         android:layout_marginLeft="110dp"
-        android:layout_marginTop="910dp"
+        android:layout_marginTop="45dp"
         android:background="@null"
         android:backgroundTint="@android:color/transparent"
         android:gravity="center"
@@ -156,7 +174,7 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
         tools:ignore="MissingConstraints" />
 
     <ImageButton
@@ -165,21 +183,21 @@
         android:layout_height="30dp"
         android:layout_marginStart="245dp"
         android:layout_marginLeft="245dp"
-        android:layout_marginTop="875dp"
+        android:layout_marginTop="15dp"
         android:background="@null"
         android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
         app:srcCompat="@drawable/email_1"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/txtBtnInbox"
+        android:id="@+id/btnInbox"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginStart="210dp"
         android:layout_marginLeft="210dp"
-        android:layout_marginTop="910dp"
+        android:layout_marginTop="45dp"
         android:background="@null"
         android:backgroundTint="@android:color/transparent"
         android:gravity="center"
@@ -188,7 +206,7 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
         tools:ignore="MissingConstraints" />
 
     <ImageButton
@@ -197,21 +215,21 @@
         android:layout_height="30dp"
         android:layout_marginStart="345dp"
         android:layout_marginLeft="345dp"
-        android:layout_marginTop="875dp"
+        android:layout_marginTop="15dp"
         android:background="@null"
         android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
         app:srcCompat="@drawable/user_1"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/txtBtnUser"
+        android:id="@+id/btnUser"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginStart="310dp"
         android:layout_marginLeft="310dp"
-        android:layout_marginTop="910dp"
+        android:layout_marginTop="45dp"
         android:background="@null"
         android:backgroundTint="@android:color/transparent"
         android:gravity="center"
@@ -220,7 +238,7 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

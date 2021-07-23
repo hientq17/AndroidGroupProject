@@ -1,17 +1,18 @@
 package edu.fpt.groupproject.model;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable {
     protected int id;
     protected String author;
     protected String title;
-    protected String content;
+    protected String address;
     protected double price;
-    protected String type;
     protected String image;
-    protected double electricity;
-    protected double water;
-    protected double wifi;
-    protected String note;
+    protected String electricity;
+    protected String water;
+    protected String wifi;
+    protected String description;
     protected String time;
 
     public Room() {
@@ -41,12 +42,12 @@ public class Room {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getAddress() {
+        return address;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public double getPrice() {
@@ -57,14 +58,6 @@ public class Room {
         this.price = price;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getImage() {
         return image;
     }
@@ -73,36 +66,36 @@ public class Room {
         this.image = image;
     }
 
-    public double getElectricity() {
+    public String getElectricity() {
         return electricity;
     }
 
-    public void setElectricity(double electricity) {
+    public void setElectricity(String electricity) {
         this.electricity = electricity;
     }
 
-    public double getWater() {
+    public String getWater() {
         return water;
     }
 
-    public void setWater(double water) {
+    public void setWater(String water) {
         this.water = water;
     }
 
-    public double getWifi() {
+    public String getWifi() {
         return wifi;
     }
 
-    public void setWifi(double wifi) {
+    public void setWifi(String wifi) {
         this.wifi = wifi;
     }
 
-    public String getNote() {
-        return note;
+    public String getDescription() {
+        return description;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getTime() {
