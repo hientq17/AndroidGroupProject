@@ -22,4 +22,6 @@ public interface IRoomApi {
     Call<List<Room>> getListBookedRoomsByUsername(@Query("username") String username, @Query("token") String token);
     @GET("/api/room/get-list-rooms-by-author")
     Call<List<Room>> getListRoomsByAuthor(@Query("author") String author, @Query("token") String token);
+    @GET("/api/room/search")
+    Call<List<Room>> getListRoomSearch(@Query("searchText") String searchText);
 }
