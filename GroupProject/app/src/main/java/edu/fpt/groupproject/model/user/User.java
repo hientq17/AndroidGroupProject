@@ -1,4 +1,4 @@
-package edu.fpt.groupproject.model;
+package edu.fpt.groupproject.model.user;
 
 import java.io.Serializable;
 
@@ -10,6 +10,7 @@ public class User implements Serializable {
     protected String phone;
     protected String role;
     protected String googleId;
+    protected boolean status = true;
 
     public User() {
     }
@@ -73,5 +74,13 @@ public class User implements Serializable {
 
     public void setGoogleId(String googleId) {
         this.googleId = googleId;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

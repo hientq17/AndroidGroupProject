@@ -9,6 +9,9 @@ const storeProcedureName = function () {
         getTopRooms: () => {
             return 'Call getTopRooms()'
         },
+        getListBookedRoomsByUsername: () => {
+            return 'Call getListBookedRoomsByUsername(?)'
+        },
         getListRoomsByAuthor: () => { 
             return 'Call getListRoomsByAuthor(?)'
         },

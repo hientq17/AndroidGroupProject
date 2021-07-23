@@ -9,6 +9,10 @@ module.exports = function (app, dbConnection) {
     app.route('/api/room/get-top-rooms')
         .get(roomController(dbConnection).getTopRooms);
 
+    app.route('/api/room/get-list-booked-rooms-by-username')
+        .get(roomController(dbConnection).getListBookedRoomsByUsername);
+
+
     app.route('/api/room/get-list-rooms-by-author')
         .get(roomController(dbConnection).getListRoomsByAuthor);
 

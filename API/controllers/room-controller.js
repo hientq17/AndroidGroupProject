@@ -13,7 +13,8 @@ const apiRoom= function (dbConnection) {
                     if(response[0].length > 0)
                          res.json(response[0])
                     else
-                        res.json("Not found")
+                        //res.json("EMPTY")
+                        res.json([])
                 }
             })
         },
@@ -24,7 +25,21 @@ const apiRoom= function (dbConnection) {
                     if(response[0].length > 0)
                          res.json(response[0])
                     else
-                        res.json("Not found")
+                        //res.json("EMPTY")
+                        res.json([])
+                }
+            })
+        },
+        getListBookedRoomsByUsername: (req, res) => {
+            dbConnection.query(storeProcedureName().getListBookedRoomsByUsername(),[req.query.username], (err, response) => {
+                if (err) res.json(err)
+                else{
+                    if(response[0].length > 0)
+                         res.json(response[0])
+                    else
+                        //res.json("EMPTY")
+                        res.json([])
+            
                 }
             })
         },
@@ -35,7 +50,8 @@ const apiRoom= function (dbConnection) {
                     if(response[0].length > 0)
                          res.json(response[0])
                     else
-                        res.json("Not found")
+                        //res.json("EMPTY")
+                        res.json([])
                 }
             })
         },
@@ -44,13 +60,14 @@ const apiRoom= function (dbConnection) {
                 dbConnection.query(storeProcedureName().getRoomById(), [req.query.id], (err, response) => {
                     if (err) res.json(err);
                     if (response[0].length == 0)
-                        res.json("Not found")
+                        //res.json("EMPTY")
+                        res.json(null)
                     else
                         res.json(response[0])
                 })
             }
             else {
-                res.json("Not found")
+                res.json("EMPTY")
             }
         },
         insertOrUpdateRoom: (req, res) => {
@@ -81,7 +98,8 @@ const apiRoom= function (dbConnection) {
                 })
             }
             else {
-                res.json("Not found")
+                //res.json("EMPTY")
+                res.json(null)
             }
         }
     }

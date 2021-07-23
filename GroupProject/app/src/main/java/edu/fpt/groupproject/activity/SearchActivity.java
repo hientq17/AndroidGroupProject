@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import edu.fpt.groupproject.R;
 import edu.fpt.groupproject.api.IRoomApi;
 import edu.fpt.groupproject.constant.SysConstant;
-import edu.fpt.groupproject.model.Room;
+import edu.fpt.groupproject.model.room.Room;
 import edu.fpt.groupproject.adapter.RoomAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;

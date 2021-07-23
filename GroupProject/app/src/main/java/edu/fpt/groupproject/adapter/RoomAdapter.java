@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import edu.fpt.groupproject.R;
-import edu.fpt.groupproject.model.Room;
+import edu.fpt.groupproject.model.room.Room;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

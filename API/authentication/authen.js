@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const verifiedUrl = [
     "/api/user/get-user-by-username",
     "/api/room/get-list-rooms-by-author",
+    "/api/room/get-list-booked-rooms-by-username",
     "/api/room/insert-or-update-room",
     "/api/room/delete-room",
     "/api/message/get-list-messages-by-inbox",
