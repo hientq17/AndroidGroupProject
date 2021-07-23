@@ -15,8 +15,8 @@
 
     <ImageButton
         android:id="@+id/btnAddInbox"
-        android:layout_width="150px"
-        android:layout_height="150px"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:scaleType="fitXY"
         android:src="@drawable/btn_plus"
         android:text="Button"
@@ -25,19 +25,19 @@
         app:layout_constraintHorizontal_bias="0.997"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.516" />
 
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="150px"
-        android:layout_height="150px"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/recyclerviewInbox"
         app:layout_constraintEnd_toEndOf="@+id/btnAddInbox"
         app:layout_constraintHorizontal_bias="0.002"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.387"
         app:srcCompat="@drawable/btn_back" />
 
     <TextView
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="Hộp thư đến"
         android:textColor="#000000"
-        android:textSize="85px"
+        android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/recyclerviewInbox"
         app:layout_constraintEnd_toStartOf="@+id/btnAddInbox"

@@ -16,7 +16,7 @@ import edu.fpt.groupproject.R;
 import edu.fpt.groupproject.api.IRoomApi;
 import edu.fpt.groupproject.constant.SysConstant;
 import edu.fpt.groupproject.model.Room;
-import edu.fpt.groupproject.recyclerview.RoomAdapter;
+import edu.fpt.groupproject.adapter.RoomAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
