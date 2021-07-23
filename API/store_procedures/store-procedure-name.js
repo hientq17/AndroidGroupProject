@@ -3,6 +3,12 @@
 const storeProcedureName = function () {
     return {
         //Room
+        getListAllRooms: () => {
+            return 'Call getListAllRooms()'
+        },
+        getTopRooms: () => {
+            return 'Call getTopRooms()'
+        },
         getListRoomsByAuthor: () => { 
             return 'Call getListRoomsByAuthor(?)'
         },

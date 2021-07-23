@@ -55,7 +55,7 @@ const apiUser= function (dbConnection) {
                     if (response[0].length == 0)
                         res.json("Not found")
                     else
-                        res.json(response[0])
+                        res.json(response[0][0])
                 })
             }
             else {

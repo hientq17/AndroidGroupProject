@@ -1,14 +1,15 @@
-package edu.fpt.groupproject;
+package edu.fpt.groupproject.activity;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import edu.fpt.groupproject.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class InboxActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_layout);
+        setContentView(R.layout.inbox_layout);
     }
 }
