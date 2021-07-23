@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".MainActivity">
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/imgBtnBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đăng ký phòng"
-        android:textColor="#4FBBD5"
-        android:textSize="75px"
-        android:textStyle="bold"
+        android:text="Đăng bài viết mới"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.022" />
 
     <EditText
         android:id="@+id/txtTitle"
@@ -23,6 +36,7 @@
         android:layout_height="120px"
         android:ems="10"
         android:hint="Tiêu đề"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -36,6 +50,7 @@
         android:layout_height="120px"
         android:ems="10"
         android:hint="Địa chỉ phòng trọ"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
@@ -48,7 +63,8 @@
         android:layout_width="750px"
         android:layout_height="120px"
         android:ems="10"
-        android:hint="Giá thuê"
+        android:hint="Giá cho thuê"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
@@ -57,11 +73,12 @@
         app:layout_constraintVertical_bias="0.308" />
 
     <EditText
-        android:id="@+id/txtWater"
+        android:id="@+id/txtElectric"
         android:layout_width="750px"
         android:layout_height="120px"
         android:ems="10"
-        android:hint="Tiền nước"
+        android:hint="Tiền điện"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -70,47 +87,66 @@
         app:layout_constraintVertical_bias="0.404" />
 
     <EditText
-        android:id="@+id/txtWifi"
+        android:id="@+id/txtWater"
         android:layout_width="750px"
         android:layout_height="120px"
         android:ems="10"
-        android:hint="Tiền wifi"
+        android:hint="Tiền nước"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
 
     <EditText
-        android:id="@+id/txtDescription"
+        android:id="@+id/txtWifi"
         android:layout_width="750px"
         android:layout_height="120px"
         android:ems="10"
-        android:hint="Miêu tả"
+        android:hint="Tiền wifi"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.597" />
+
+    <EditText
+        android:id="@+id/txtDescription"
+        android:layout_width="750px"
+        android:layout_height="180px"
+        android:ems="10"
+        android:hint="Mô tả thêm"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.716" />
 
     <ImageView
         android:id="@+id/btnImageRoom1"
         android:layout_width="230px"
         android:layout_height="200px"
+        android:layout_marginBottom="120dp"
         android:src="@drawable/gallery"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintVertical_bias="0.2" />
+
 
     <ImageView
         android:id="@+id/btnImageRoom2"
         android:layout_width="230px"
         android:layout_height="200px"
+        android:layout_marginBottom="120dp"
         android:src="@drawable/gallery"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,25 +159,25 @@
         android:id="@+id/btnImageRoom3"
         android:layout_width="230px"
         android:layout_height="200px"
+        android:layout_marginBottom="120dp"
         android:src="@drawable/gallery"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.804"
+        app:layout_constraintHorizontal_bias="0.802"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.72" />
-
-
 
     <Button
         android:id="@+id/btnSignupRoom"
         android:layout_width="750px"
         android:layout_height="170px"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="#2193B0"
         android:text="Tạo ngay"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.882" />

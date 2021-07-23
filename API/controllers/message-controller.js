@@ -13,7 +13,7 @@ const apiMessage= function (dbConnection) {
                     if(response[0].length > 0)
                          res.json(response[0])
                     else
-                        res.json("Not found")
+                        res.json("EMPTY")
                 }
             })
         },
@@ -22,13 +22,13 @@ const apiMessage= function (dbConnection) {
                 dbConnection.query(storeProcedureName().getMessageById(), [req.query.id], (err, response) => {
                     if (err) res.json(err);
                     if (response[0].length == 0)
-                        res.json("Not found")
+                        res.json("EMPTY")
                     else
                         res.json(response[0])
                 })
             }
             else {
-                res.json("Not found")
+                res.json("EMPTY")
             }
         },
         insertOrUpdateMessage: (req, res) => {
@@ -61,7 +61,7 @@ const apiMessage= function (dbConnection) {
                 })
             }
             else {
-                res.json("Not found")
+                res.json("EMPTY")
             }
         }
     }

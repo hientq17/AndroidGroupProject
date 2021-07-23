@@ -20,6 +20,7 @@
         <activity android:name=".activity.ProfileActivity"></activity>
         <activity android:name=".activity.DetailActivity"></activity>
         <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.BookingActivity"></activity>
     </application>
 
 </manifest>

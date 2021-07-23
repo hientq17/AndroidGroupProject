@@ -1,11 +1,8 @@
 package edu.fpt.groupproject.api;
 
-import edu.fpt.groupproject.model.Room;
-import edu.fpt.groupproject.model.User;
+import edu.fpt.groupproject.model.room.Room;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 import java.util.List;
@@ -21,4 +18,8 @@ public interface IRoomApi {
     Call<List<Room>> getTopRooms();
     @GET("/api/room/get-list-all-rooms")
     Call<List<Room>> getListAllRooms();
+    @GET("/api/room/get-list-booked-rooms-by-username")
+    Call<List<Room>> getListBookedRoomsByUsername(@Query("username") String username, @Query("token") String token);
+    @GET("/api/room/get-list-rooms-by-author")
+    Call<List<Room>> getListRoomsByAuthor(@Query("author") String author, @Query("token") String token);
 }

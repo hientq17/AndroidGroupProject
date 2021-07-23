@@ -7,12 +7,12 @@
     tools:context=".activity.ChatActivity">
 
     <TextView
-        android:id="@+id/txtTitle"
+        android:id="@+id/txtText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="Chỉ còn một vài bước để\n   đặt phòng thành công"
-        android:textSize="18dp"
+        android:textSize="20dp"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,8 +26,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="144dp"
         android:text="Kiểm tra thông tin một lần nữa nhé!"
+        android:textSize="16dp"
         android:textColor="@color/black"
         android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="176dp"
+        android:gravity="center"
+        android:text="Phòng trọ sinh viên giá rẻ"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -46,11 +61,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/txtImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
+        android:id="@+id/imgRoom"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="228dp"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/detail_image2" />
@@ -59,35 +76,35 @@
         android:id="@+id/txtAddress"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="344dp"
+        android:layout_marginTop="396dp"
         android:gravity="center_horizontal"
         android:text="Địa chỉ: 12 Nam Kỳ Khởi Nghĩa, Hoà Hải, Ngủ Hành Sơn, Đà Nẵng"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.577"
+        app:layout_constraintHorizontal_bias="0.573"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtMoreInfo"
+    <Button
+        android:id="@+id/btnMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="396dp"
-        android:text="Thông tin khác"
+        android:layout_marginTop="440dp"
+        android:text="Xem thêm"
+        android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtContentMsg"
+        android:id="@+id/txtPhone"
         android:layout_width="900px"
         android:layout_height="120px"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:ems="10"
@@ -96,14 +113,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle2" />
 
+    <EditText
+        android:id="@+id/txtNote"
+        android:layout_width="900px"
+        android:layout_height="180px"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:gravity="left"
+        android:padding="10dp"
+        android:hint="Ghi chú"
+        android:background="@drawable/edit_text_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle2" />
+
     <TextView
         android:id="@+id/txtTitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="472dp"
+        android:layout_marginTop="508dp"
         android:text="Chủ trọ sẽ liên hệ với bạn qua"
         android:textColor="@color/black"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -111,12 +148,11 @@
         android:id="@+id/btnBook"
         android:layout_width="900px"
         android:layout_height="140px"
-        android:layout_marginTop="576dp"
-        android:textColor="@color/white"
+        android:layout_marginTop="684dp"
         android:backgroundTint="#2193B0"
         android:text="Đặt phòng"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

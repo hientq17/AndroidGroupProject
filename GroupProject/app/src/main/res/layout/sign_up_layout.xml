@@ -141,4 +141,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
 
+    <RadioGroup
+        android:id="@+id/rdGroup"
+        android:layout_width="750px"
+        android:layout_height="170px"
+        android:textSize="14dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPhone" >
+
+        <RadioButton
+            android:id="@+id/rdAdmin"
+            android:layout_width="375px"
+            android:layout_height="170px"
+            android:text="Chủ trọ"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rdGroup" />
+
+        <RadioButton
+            android:id="@+id/rdUser"
+            android:checked="true"
+            android:layout_width="375px"
+            android:layout_height="170px"
+            android:text="Người thuê"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rdGroup" />
+
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

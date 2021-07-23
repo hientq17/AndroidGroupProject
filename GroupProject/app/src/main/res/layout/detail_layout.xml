@@ -125,8 +125,8 @@
         android:layout_marginTop="10dp"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"/>
-<!--        app:srcCompat="@drawable/detail_image1" />-->
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:srcCompat="@drawable/detail_image1" />
 
     <ImageView
         android:id="@+id/imgRoom2"

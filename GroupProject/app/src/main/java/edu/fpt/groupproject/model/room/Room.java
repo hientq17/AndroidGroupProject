@@ -1,4 +1,4 @@
-package edu.fpt.groupproject.model;
+package edu.fpt.groupproject.model.room;
 
 import java.io.Serializable;
 
