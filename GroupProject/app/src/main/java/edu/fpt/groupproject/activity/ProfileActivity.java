@@ -1,6 +1,7 @@
 package edu.fpt.groupproject.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -79,19 +81,26 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 ProfileActivity.this.finish();
                 break;
             case R.id.imgBtnLogout:
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove("username");
-                editor.remove("token");
-                editor.commit();
-                Toast.makeText(ProfileActivity.this,"Đăng xuất thành công!",Toast.LENGTH_SHORT).show();
-                //move to home activity after 1 second
-                new Handler().postDelayed(new Runnable(){
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(ProfileActivity.this,HomeActivity.class);
-                        startActivity(intent);
-                    }
-                }, 1000);
+                new AlertDialog.Builder(this)
+                        .setMessage("Bạn muốn đăng xuất?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.remove("username");
+                                editor.remove("token");
+                                editor.commit();
+                                Toast.makeText(ProfileActivity.this,"Đăng xuất thành công!",Toast.LENGTH_SHORT).show();
+                                //move to home activity after 1 second
+                                new Handler().postDelayed(new Runnable(){
+                                    @Override
+                                    public void run() {
+                                        Intent intent = new Intent(ProfileActivity.this,HomeActivity.class);
+                                        startActivity(intent);
+                                    }
+                                }, 1000);
+                            }})
+                        .setNegativeButton(android.R.string.no, null).show();
                 break;
             case R.id.imgBtnHome:
                 intent = new Intent(this, HomeActivity.class);
@@ -186,12 +195,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         editor.remove("token");
         editor.commit();
 
-        //move to home activity after 1 second
+        //move to login activity after 1 second
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                Intent intent = new Intent(ProfileActivity.this,HomeActivity.class);
+                Intent intent = new Intent(ProfileActivity.this,LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         }, 1000);
     }

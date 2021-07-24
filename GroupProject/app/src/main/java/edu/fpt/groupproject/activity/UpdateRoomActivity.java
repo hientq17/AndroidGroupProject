@@ -1,6 +1,7 @@
 package edu.fpt.groupproject.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -13,6 +14,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.*;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.squareup.picasso.Picasso;
 import edu.fpt.groupproject.R;
@@ -98,7 +100,14 @@ public class UpdateRoomActivity extends AppCompatActivity implements View.OnClic
                 UpdateRoomActivity.this.finish();
                 break;
             case R.id.imgBtnDelete:
-                deleteRoom();
+                new AlertDialog.Builder(this)
+                        .setMessage("Bạn muốn xoá bài viết này?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                deleteRoom();
+                            }})
+                        .setNegativeButton(android.R.string.no, null).show();
                 break;
             case R.id.btnUpdate:
                 if(updateRoomValidation()){
