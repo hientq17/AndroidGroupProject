@@ -132,7 +132,7 @@
         android:id="@+id/imgBtnSearch"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="140dp"
+        android:layout_marginStart="175dp"
         android:layout_marginLeft="140dp"
         android:layout_marginTop="15dp"
         android:background="@null"
@@ -145,7 +145,7 @@
         android:id="@+id/btnSearch"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_marginStart="110dp"
+        android:layout_marginStart="140dp"
         android:layout_marginLeft="110dp"
         android:layout_marginTop="45dp"
         android:background="@null"
@@ -156,61 +156,27 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imgBtnInbox"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="245dp"
-        android:layout_marginLeft="245dp"
-        android:layout_marginTop="15dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        app:srcCompat="@drawable/email_1"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btnInbox"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="210dp"
-        android:layout_marginLeft="210dp"
-        android:layout_marginTop="45dp"
-        android:background="@null"
-        android:backgroundTint="@android:color/transparent"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="Tin nhắn"
-        android:textColor="@color/black"
-        android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <ImageButton
         android:id="@+id/imgBtnUser"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="345dp"
+        android:layout_marginStart="315dp"
         android:layout_marginLeft="345dp"
         android:layout_marginTop="15dp"
         android:background="@null"
         android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:srcCompat="@drawable/user_1"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/user_1" />
 
     <Button
         android:id="@+id/btnUser"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_marginStart="310dp"
-        android:layout_marginLeft="310dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginLeft="300dp"
         android:layout_marginTop="45dp"
         android:background="@null"
         android:backgroundTint="@android:color/transparent"
@@ -220,7 +186,6 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="@+id/view"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

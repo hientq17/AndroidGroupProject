@@ -17,8 +17,8 @@
 
     <ImageButton
         android:id="@+id/imgBtnBack"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
@@ -141,6 +141,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEdit" />
 
+    <ImageButton
+        android:id="@+id/imgBtnAdd"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:visibility="invisible"
+        android:backgroundTint="@android:color/transparent"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEdit"
+        app:srcCompat="@drawable/add" />
+
     <TextView
         android:id="@+id/txtMessage"
         android:layout_width="match_parent"
@@ -223,7 +238,7 @@
         android:id="@+id/imgBtnSearch"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="140dp"
+        android:layout_marginStart="175dp"
         android:layout_marginLeft="140dp"
         android:layout_marginTop="15dp"
         android:background="@null"
@@ -236,7 +251,7 @@
         android:id="@+id/btnSearch"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_marginStart="110dp"
+        android:layout_marginStart="140dp"
         android:layout_marginLeft="110dp"
         android:layout_marginTop="45dp"
         android:background="@null"
@@ -250,40 +265,10 @@
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <ImageButton
-        android:id="@+id/imgBtnInbox"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="245dp"
-        android:layout_marginLeft="245dp"
-        android:layout_marginTop="15dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        app:srcCompat="@drawable/email_1"/>
-
-    <Button
-        android:id="@+id/btnInbox"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="210dp"
-        android:layout_marginLeft="210dp"
-        android:layout_marginTop="45dp"
-        android:background="@null"
-        android:backgroundTint="@android:color/transparent"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="Tin nhắn"
-        android:textColor="@color/black"
-        android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"/>
-
-    <ImageButton
         android:id="@+id/imgBtnUser"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="345dp"
+        android:layout_marginStart="315dp"
         android:layout_marginLeft="345dp"
         android:layout_marginTop="15dp"
         android:background="@null"
@@ -296,8 +281,8 @@
         android:id="@+id/btnUser"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_marginStart="310dp"
-        android:layout_marginLeft="310dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginLeft="300dp"
         android:layout_marginTop="45dp"
         android:background="@null"
         android:backgroundTint="@android:color/transparent"
@@ -308,5 +293,6 @@
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

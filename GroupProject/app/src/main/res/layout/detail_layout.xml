@@ -33,7 +33,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imgBtnShare"
+        android:id="@+id/imgBtnEdit"
+        android:visibility="invisible"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="15dp"
@@ -41,7 +42,7 @@
         android:layout_marginRight="15dp"
         android:background="@null"
         android:scaleType="centerInside"
-        android:src="@drawable/share"
+        android:src="@drawable/edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -185,7 +186,7 @@
 
     <TextView
         android:id="@+id/txtElectric"
-        android:layout_width="80dp"
+        android:layout_width="100dp"
         android:text="3K"
         android:textSize="16dp"
         android:gravity="center_vertical"
@@ -193,7 +194,7 @@
         android:textStyle="bold"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="@+id/view1"
         app:layout_constraintTop_toTopOf="@+id/view1" />
 
@@ -218,7 +219,7 @@
         android:textStyle="bold"
         android:layout_marginStart="160dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="14dp"
         app:layout_constraintStart_toStartOf="@+id/view1"
         app:layout_constraintTop_toTopOf="@+id/view1"/>
 
@@ -239,7 +240,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="280dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="12dp"
         android:gravity="center_vertical"
         android:text="20K"
         android:textSize="16dp"

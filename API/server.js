@@ -10,8 +10,7 @@ const fileUpload = require('express-fileupload')
 require('dotenv').load()
 
 app.use(fileUpload())
-
-app.use(bodyParser.json())
+app.use(bodyParser.json({limit: '50mb'}))
 
 app.use(authen, (req, res, next) => {next()})
 

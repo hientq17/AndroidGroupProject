@@ -1,13 +1,24 @@
 package edu.fpt.groupproject.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.*;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import com.squareup.picasso.Picasso;
 import edu.fpt.groupproject.R;
 import edu.fpt.groupproject.api.IUserApi;
@@ -20,17 +31,24 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
     TextView txtTitle, txtTime, txtPrice, txtAddress, txtDescription, txtElectric, txtWater, txtWifi, txtAuthor;
     ImageView imgRoom1, imgRoom2, imgRoom3;
-    ImageButton imgBtnBack;
-    Button btnBook;
+    ImageButton imgBtnBack, imgBtnEdit, imgBtnDelete;
+    Button btnBook, btnCall, btnChat;
     Room room;
+    User author;
     SharedPreferences sharedPreferences;
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0 ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,8 +58,14 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
         btnBook = findViewById(R.id.btnBook);
         btnBook.setOnClickListener(this);
+        btnCall = findViewById(R.id.btnCall);
+        btnCall.setOnClickListener(this);
+        btnChat = findViewById(R.id.btnChat);
+        btnChat.setOnClickListener(this);
         imgBtnBack = findViewById(R.id.imgBtnBack);
         imgBtnBack.setOnClickListener(this);
+        imgBtnEdit = findViewById(R.id.imgBtnEdit);
+        imgBtnEdit.setOnClickListener(this);
         txtTitle = findViewById(R.id.txtTitle);
         txtTime = findViewById(R.id.txtTime);
         txtPrice = findViewById(R.id.txtPrice);
@@ -56,6 +80,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         imgRoom3 = findViewById(R.id.imgRoom3);
         //get room from intent
         room = (Room)getIntent().getSerializableExtra("ROOM");
+        //if current user is author
+        if(room.getAuthor().equals(sharedPreferences.getString("username",null))){
+            imgBtnEdit.setVisibility(View.VISIBLE);
+        } else {
+            imgBtnEdit.setVisibility(View.INVISIBLE);
+        }
         //convert sql date to display
         String sqlFormat = "yyyy-MM-dd'T'HH:mm";
         String displayFormat = "dd/MM/yyyy hh:mm";
@@ -79,7 +109,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         txtElectric.setText(room.getElectricity());
         txtWater.setText(room.getWater());
         txtWifi.setText(room.getWifi());
-        getAuthor();
+        getAuthor(room.getAuthor());
         //show image
         String[] listUrl = room.getImage().split(";");
         Picasso.with(this).load(listUrl[0]).into(imgRoom1);
@@ -103,19 +133,28 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     startActivity(intent);
                 }
                 break;
+            case R.id.imgBtnEdit:
+                Intent intent = new Intent(this, UpdateRoomActivity.class);
+                intent.putExtra("ROOM",room);
+                startActivity(intent);
+                break;
+            case R.id.btnCall:
+                phoneCall();
+                break;
         }
     }
 
-    public void getAuthor(){
+    public void getAuthor(String username){
         Retrofit retrofit = new Retrofit.Builder() .baseUrl(SysConstant.BaseURL)
                 .addConverterFactory(GsonConverterFactory.create()) .build();
 
         IUserApi userApi = retrofit.create(IUserApi.class);
-        userApi.getUser(sharedPreferences.getString("username",null),sharedPreferences.getString("token",null))
+        userApi.getUser(username,sharedPreferences.getString("token",null))
                 .enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
-                        txtAuthor.setText(response.body().getName());
+                        author = response.body();
+                        txtAuthor.setText(author.getName());
                     }
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
@@ -126,5 +165,34 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 });
+    }
+
+    public void phoneCall(){
+        if (Build.VERSION.SDK_INT > 22) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(DetailActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 101);
+                return;
+            }
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse("tel:+" + author.getPhone()));
+            startActivity(callIntent);
+        } else {
+
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse("tel:+" + author.getPhone()));
+            startActivity(callIntent);
+        }
+    }
+
+    protected void sendSMSMessage() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.SEND_SMS)) {
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.SEND_SMS},
+                        MY_PERMISSIONS_REQUEST_SEND_SMS);
+            }
+        }
     }
 }

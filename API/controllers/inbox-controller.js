@@ -1,7 +1,7 @@
 'use strict'
 
 const responseBaseModel = require("../models/response-base-model")
-const storeProcedureName = require("../store_procedures/store-procedure-name")
+const storeProcedureName = require("../configs/store-procedure-name")
 const isValidModel = require("../utils/model-filter") 
 
 const apiInbox= function (dbConnection) {

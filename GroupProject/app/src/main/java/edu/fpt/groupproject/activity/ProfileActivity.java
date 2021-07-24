@@ -36,7 +36,7 @@ import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener,RoomAdapter.OnItemClickListener, ChangePasswordPopup.ChangePasswordPopupListener, ChangeInfoPopup.ChangeInfoPopupPopupListener {
     TextView txtName, txtPhone, txtAddress, txtRoleMessage, txtMessage, txtCurrentPassword, txtNewPassword, txtFullName, txtNewAddress, txtPhoneNumber;;
-    ImageButton imgBtnBack, imgBtnLogout, imgBtnHome, imgBtnSearch;
+    ImageButton imgBtnBack, imgBtnLogout, imgBtnHome, imgBtnSearch, imgBtnAdd;
     Button btnEdit, btnChangePassword;
     SharedPreferences sharedPreferences;
     RecyclerView recyclerView;
@@ -51,6 +51,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         imgBtnBack.setOnClickListener(this);
         imgBtnLogout = findViewById(R.id.imgBtnLogout);
         imgBtnLogout.setOnClickListener(this);
+        imgBtnAdd = findViewById(R.id.imgBtnAdd);
+        imgBtnAdd.setOnClickListener(this);
         imgBtnHome = findViewById(R.id.imgBtnHome);
         imgBtnHome.setOnClickListener(this);
         imgBtnSearch = findViewById(R.id.imgBtnSearch);
@@ -99,6 +101,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 intent = new Intent(this, SearchActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.imgBtnAdd:
+                intent = new Intent(this, CreateRoomActivity.class);
+                startActivity(intent);
             case R.id.btnEdit:
                 showPopup("UPDATE_INFO");
                 break;
@@ -122,6 +127,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         txtAddress.setText("Địa chỉ: "+response.body().getAddress());
                         if(response.body().getRole().equals("ADMIN")){
                             txtRoleMessage.setText("Bài viết của bạn");
+                            imgBtnAdd.setVisibility(View.VISIBLE);
                             getListRoomsByAuthor();
                         } else {
                             txtRoleMessage.setText("Phòng trọ đã liên hệ");
