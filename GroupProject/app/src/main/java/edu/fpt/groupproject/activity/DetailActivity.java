@@ -25,6 +25,7 @@ import edu.fpt.groupproject.api.IUserApi;
 import edu.fpt.groupproject.constant.SysConstant;
 import edu.fpt.groupproject.model.room.Room;
 import edu.fpt.groupproject.model.user.User;
+import edu.fpt.groupproject.popup.ListUserBookingPopup;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,12 +44,11 @@ import java.util.List;
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
     TextView txtTitle, txtTime, txtPrice, txtAddress, txtDescription, txtElectric, txtWater, txtWifi, txtAuthor;
     ImageView imgRoom1, imgRoom2, imgRoom3;
-    ImageButton imgBtnBack, imgBtnEdit, imgBtnDelete;
-    Button btnBook, btnCall, btnChat;
-    Room room;
+    ImageButton imgBtnBack, imgBtnEdit, imgBtnMore;
+    Button btnBook, btnCall;
+    public Room room;
     User author;
     SharedPreferences sharedPreferences;
-    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0 ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,12 +60,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         btnBook.setOnClickListener(this);
         btnCall = findViewById(R.id.btnCall);
         btnCall.setOnClickListener(this);
-        btnChat = findViewById(R.id.btnChat);
-        btnChat.setOnClickListener(this);
         imgBtnBack = findViewById(R.id.imgBtnBack);
         imgBtnBack.setOnClickListener(this);
         imgBtnEdit = findViewById(R.id.imgBtnEdit);
         imgBtnEdit.setOnClickListener(this);
+        imgBtnMore = findViewById(R.id.imgBtnMore);
+        imgBtnMore.setOnClickListener(this);
         txtTitle = findViewById(R.id.txtTitle);
         txtTime = findViewById(R.id.txtTime);
         txtPrice = findViewById(R.id.txtPrice);
@@ -83,8 +83,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         //if current user is author
         if(room.getAuthor().equals(sharedPreferences.getString("username",null))){
             imgBtnEdit.setVisibility(View.VISIBLE);
+            imgBtnMore.setVisibility(View.VISIBLE);
+            btnBook.setEnabled(false);
         } else {
             imgBtnEdit.setVisibility(View.INVISIBLE);
+            imgBtnMore.setVisibility(View.INVISIBLE);
+            btnBook.setEnabled(true);
         }
         //convert sql date to display
         String sqlFormat = "yyyy-MM-dd'T'HH:mm";
@@ -141,6 +145,9 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnCall:
                 phoneCall();
                 break;
+            case R.id.imgBtnMore:
+                showBookingPopup();
+                break;
         }
     }
 
@@ -184,15 +191,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    protected void sendSMSMessage() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.SEND_SMS)) {
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.SEND_SMS},
-                        MY_PERMISSIONS_REQUEST_SEND_SMS);
-            }
-        }
+    public void showBookingPopup(){
+        ListUserBookingPopup popup = new ListUserBookingPopup();
+        Bundle args = new Bundle();
+        args.putInt("roomId", room.getId());
+        popup.setArguments(args);
+        popup.show(getSupportFragmentManager(), "UPDATE_INFO");
     }
 }

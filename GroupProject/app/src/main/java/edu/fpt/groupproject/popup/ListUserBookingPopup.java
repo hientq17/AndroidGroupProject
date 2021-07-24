@@ -1,17 +1,24 @@
 package edu.fpt.groupproject.popup;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +29,7 @@ import java.util.Date;
 import java.util.List;
 
 import edu.fpt.groupproject.R;
+import edu.fpt.groupproject.activity.DetailActivity;
 import edu.fpt.groupproject.activity.SearchActivity;
 import edu.fpt.groupproject.adapter.ListUserBookingAdapter;
 import edu.fpt.groupproject.adapter.RoomAdapter;
@@ -43,6 +51,7 @@ public class ListUserBookingPopup extends AppCompatDialogFragment implements Vie
     TextView txtPhoneNumber;
     TextView txtTime;
     TextView txtTotal;
+    ImageButton imgBtnCall;
     List<UserBooking> list = new ArrayList<>();;
     SharedPreferences sharedPreferences;
     RecyclerView recyclerView;
@@ -50,13 +59,11 @@ public class ListUserBookingPopup extends AppCompatDialogFragment implements Vie
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
         sharedPreferences = getActivity().getSharedPreferences("FTRO", Context.MODE_PRIVATE);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.list_user_booking, null);
-
-//        view.
 
         builder.setView(view)
                 .setTitle("Danh sách đặt phòng")
@@ -69,11 +76,12 @@ public class ListUserBookingPopup extends AppCompatDialogFragment implements Vie
         txtPhoneNumber = view.findViewById(R.id.txtPhoneNumber);
         txtTime = view.findViewById(R.id.txtTime);
         txtTotal = view.findViewById(R.id.txtTotal);
-
-        getListUserBooking(8, view);
+        imgBtnCall = view.findViewById(R.id.imgBtnCall);
+        getListUserBooking(getArguments().getInt("roomId"), view);
 
         return builder.create();
     }
+
 
     public void getListUserBooking(int roomId, View view){
 
@@ -117,4 +125,5 @@ public class ListUserBookingPopup extends AppCompatDialogFragment implements Vie
     public void onClick(View v) {
 
     }
+
 }

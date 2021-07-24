@@ -320,7 +320,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <ImageButton
-        android:id="@+id/imageView9"
+        android:id="@+id/imgBtnMore"
         android:layout_width="25dp"
         android:padding="0dp"
         android:layout_height="25dp"
@@ -346,28 +346,16 @@
 
     <Button
         android:id="@+id/btnBook"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#EAAD02"
-        android:text="Đặt phòng"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/view3"
-        app:layout_constraintTop_toTopOf="@+id/view3" />
-
-    <Button
-        android:id="@+id/btnChat"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:paddingRight="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
         android:backgroundTint="#2193B0"
         android:gravity="right"
-        android:text="Nhắn tin"
+        android:paddingTop="12dp"
+        android:textSize="18dp"
+        android:paddingRight="10dp"
+        android:text="Đặt phòng"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/view3"
@@ -375,25 +363,27 @@
 
     <ImageButton
         android:id="@+id/imgBtnChat"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/chat"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:scaleType="fitXY"
         android:backgroundTint="@android:color/transparent"
         android:translationZ="99dp"
-        app:layout_constraintStart_toStartOf="@+id/btnChat"
-        app:layout_constraintTop_toTopOf="@+id/btnChat" />
+        app:layout_constraintStart_toStartOf="@+id/btnBook"
+        app:layout_constraintTop_toTopOf="@+id/btnBook"
+        app:srcCompat="@drawable/book" />
 
     <Button
         android:id="@+id/btnCall"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="40dp"
         android:backgroundTint="#2193B0"
         android:gravity="left"
-        android:paddingLeft="10dp"
-        android:text="Gọi điện"
+        android:paddingTop="12dp"
+        android:paddingLeft="20dp"
+        android:text="Liên hệ"
+        android:textSize="18dp"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/view3"
@@ -401,8 +391,8 @@
 
     <ImageButton
         android:id="@+id/imgBtnCall"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:backgroundTint="@android:color/transparent"
         android:translationZ="99dp"
         app:layout_constraintEnd_toEndOf="@+id/btnCall"

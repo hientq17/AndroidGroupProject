@@ -1,10 +1,13 @@
 package edu.fpt.groupproject.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,7 +27,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, RoomAdapter.OnItemClickListener{
 
-    ImageButton imgBtnUser,imgBtnSearch;
+    ImageButton imgBtnUser,imgBtnSearch, imgBtnExit;
     SharedPreferences sharedPreferences;
     RecyclerView recyclerView;
     List<Room> roomList;
@@ -39,6 +42,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         imgBtnUser.setOnClickListener(HomeActivity.this);
         imgBtnSearch = findViewById(R.id.imgBtnSearch);
         imgBtnSearch.setOnClickListener(HomeActivity.this);
+        imgBtnExit = findViewById(R.id.imgBtnExit);
+        imgBtnExit.setOnClickListener(HomeActivity.this);
         getTopRooms();
     }
 
@@ -57,6 +62,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.imgBtnSearch:
                 Intent intent = new Intent(this, SearchActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.imgBtnExit:
+                new AlertDialog.Builder(this)
+                        .setMessage("Bạn muốn thoát ứng dụng?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                System.exit(0);
+                            }})
+                        .setNegativeButton(android.R.string.no, null).show();
                 break;
         }
     }
