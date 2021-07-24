@@ -90,7 +90,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         roomApi.getListRoomSearch(searchText).enqueue(new Callback<List<Room>>() {
             @Override
             public void onResponse(Call<List<Room>> call, Response<List<Room>> response) {
-                Log.e("TESTT",response.body().toString());
                 txtTotal.setText(response.body().size()+" kết quả được tìm thấy");
                 roomList = response.body();
                 //create recyclerview
