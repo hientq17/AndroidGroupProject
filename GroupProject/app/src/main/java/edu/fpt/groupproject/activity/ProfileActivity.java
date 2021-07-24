@@ -166,7 +166,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             autoLogout();
                         }else{
                             Toast.makeText(ProfileActivity.this, "Đổi thất bại. Mật khẩu hiện tại không đúng.", Toast.LENGTH_SHORT).show();
-                            showPopup("UPDATE_INFO");
+                            showPopup("UPDATE_PASSWORD");
                         }
                     }
                     @Override
@@ -319,8 +319,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         return true;
     }
 
-    public boolean validationChangePassword(String currentPassword, String newPassword){
-        if (currentPassword == null || currentPassword.equals("") || newPassword == null || newPassword.equals("")){
+    public boolean validationChangePassword(String currentPassword, String newPassword, String confirmPassword){
+        if (currentPassword == null || currentPassword.equals("")
+                || newPassword == null || newPassword.equals("")
+                || confirmPassword == null || confirmPassword.equals("")){
             return false;
         }
         return true;
@@ -348,12 +350,19 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public void applyTextPassword(String currentPassword, String newPassword) {
-        if(validationChangePassword(currentPassword, newPassword)){
-            changePassword(currentPassword, newPassword);
+    public void applyTextPassword(String currentPassword, String newPassword, String confirmPassword) {
+        if(validationChangePassword(currentPassword, newPassword, confirmPassword)){
+            if (newPassword.equals(confirmPassword)){
+                changePassword(currentPassword, newPassword);
+            }else{
+                Toast.makeText(ProfileActivity.this, "Xác nhận mật khẩu không khớp. Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+                ChangePasswordPopup popup = new ChangePasswordPopup(currentPassword, newPassword, "");
+                popup.show(getSupportFragmentManager(), "UPDATE_FAIL_PASSWORD1");
+            }
         }else{
             Toast.makeText(ProfileActivity.this, "Vui lòng nhập đầy đủ thông tin.", Toast.LENGTH_SHORT).show();
-            showPopup("UPDATE_PASSWORD");
+            ChangePasswordPopup popup = new ChangePasswordPopup(currentPassword, newPassword, confirmPassword);
+            popup.show(getSupportFragmentManager(), "UPDATE_FAIL_PASSWORD2");
         }
     }
 }

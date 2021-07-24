@@ -30,7 +30,6 @@ public class ChangeInfoPopup extends AppCompatDialogFragment {
     private ChangeInfoPopupPopupListener listener;
     SharedPreferences sharedPreferences;
 
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         sharedPreferences = getActivity().getSharedPreferences("FTRO", Context.MODE_PRIVATE);
