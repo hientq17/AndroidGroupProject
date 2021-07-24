@@ -8,7 +8,7 @@ const authen = require('./authentication/authen')
 
 require('dotenv').load()
 
-app.use(bodyParser.json())
+app.use(bodyParser.json({limit: '50mb'}))
 
 app.use(authen, (req, res, next) => {next()})
 

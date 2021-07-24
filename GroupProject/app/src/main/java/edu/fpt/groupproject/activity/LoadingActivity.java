@@ -25,6 +25,7 @@ public class LoadingActivity  extends AppCompatActivity{
             public void run() {
                 Intent intent = new Intent(LoadingActivity.this,HomeActivity.class);
                 startActivity(intent);
+                finish();
             }
         }, 1000);
     }

@@ -14,6 +14,7 @@ public class Room implements Serializable {
     protected String wifi;
     protected String description;
     protected String time;
+    protected boolean status = true;
 
     public Room() {
     }
@@ -104,5 +105,13 @@ public class Room implements Serializable {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

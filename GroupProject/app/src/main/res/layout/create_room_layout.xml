@@ -33,10 +33,12 @@
     <EditText
         android:id="@+id/txtTitle"
         android:layout_width="750px"
-        android:layout_height="120px"
+        android:layout_height="wrap_content"
+        android:minLines="1"
+        android:maxLines="2"
         android:ems="10"
         android:hint="Tiêu đề"
-        android:textSize="18dp"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -47,10 +49,12 @@
     <EditText
         android:id="@+id/txtAddress"
         android:layout_width="750px"
-        android:layout_height="120px"
+        android:layout_height="wrap_content"
+        android:minLines="1"
+        android:maxLines="2"
         android:ems="10"
         android:hint="Địa chỉ phòng trọ"
-        android:textSize="18dp"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
@@ -61,10 +65,13 @@
     <EditText
         android:id="@+id/txtPrice"
         android:layout_width="750px"
-        android:layout_height="120px"
+        android:layout_height="wrap_content"
+        android:minLines="1"
+        android:maxLines="1"
         android:ems="10"
         android:hint="Giá cho thuê"
-        android:textSize="18dp"
+        android:inputType="number"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
@@ -75,10 +82,12 @@
     <EditText
         android:id="@+id/txtElectric"
         android:layout_width="750px"
-        android:layout_height="120px"
+        android:layout_height="wrap_content"
+        android:minLines="1"
+        android:maxLines="1"
         android:ems="10"
         android:hint="Tiền điện"
-        android:textSize="18dp"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -89,10 +98,12 @@
     <EditText
         android:id="@+id/txtWater"
         android:layout_width="750px"
-        android:layout_height="120px"
+        android:layout_height="wrap_content"
+        android:minLines="1"
+        android:maxLines="1"
         android:ems="10"
         android:hint="Tiền nước"
-        android:textSize="18dp"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -103,10 +114,12 @@
     <EditText
         android:id="@+id/txtWifi"
         android:layout_width="750px"
-        android:layout_height="120px"
+        android:layout_height="wrap_content"
+        android:minLines="1"
+        android:maxLines="1"
         android:ems="10"
         android:hint="Tiền wifi"
-        android:textSize="18dp"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -117,10 +130,12 @@
     <EditText
         android:id="@+id/txtDescription"
         android:layout_width="750px"
-        android:layout_height="180px"
+        android:layout_height="wrap_content"
+        android:minLines="1"
+        android:maxLines="5"
         android:ems="10"
         android:hint="Mô tả thêm"
-        android:textSize="18dp"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -129,9 +144,10 @@
         app:layout_constraintVertical_bias="0.716" />
 
     <ImageView
-        android:id="@+id/btnImageRoom1"
-        android:layout_width="230px"
+        android:id="@+id/imgRoom1"
+        android:layout_width="250px"
         android:layout_height="200px"
+        android:scaleType="fitXY"
         android:layout_marginBottom="120dp"
         android:src="@drawable/gallery"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -143,9 +159,10 @@
 
 
     <ImageView
-        android:id="@+id/btnImageRoom2"
-        android:layout_width="230px"
+        android:id="@+id/imgRoom2"
+        android:layout_width="250px"
         android:layout_height="200px"
+        android:scaleType="fitXY"
         android:layout_marginBottom="120dp"
         android:src="@drawable/gallery"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -156,9 +173,10 @@
         app:layout_constraintVertical_bias="0.72" />
 
     <ImageView
-        android:id="@+id/btnImageRoom3"
-        android:layout_width="230px"
+        android:id="@+id/imgRoom3"
+        android:layout_width="250px"
         android:layout_height="200px"
+        android:scaleType="fitXY"
         android:layout_marginBottom="120dp"
         android:src="@drawable/gallery"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -169,7 +187,7 @@
         app:layout_constraintVertical_bias="0.72" />
 
     <Button
-        android:id="@+id/btnSignupRoom"
+        android:id="@+id/btnCreateRoom"
         android:layout_width="750px"
         android:layout_height="170px"
         android:layout_marginBottom="40dp"

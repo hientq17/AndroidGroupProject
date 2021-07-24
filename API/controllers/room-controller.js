@@ -1,8 +1,9 @@
 'use strict'
 
 const responseBaseModel = require("../models/response-base-model")
-const storeProcedureName = require("../store_procedures/store-procedure-name")
+const storeProcedureName = require("../configs/store-procedure-name")
 const isValidModel = require("../utils/model-filter")
+const cloudinary = require("../configs/cloudinary")
 
 const apiRoom= function (dbConnection) {
     return {
@@ -63,28 +64,27 @@ const apiRoom= function (dbConnection) {
                         //res.json("EMPTY")
                         res.json(null)
                     else
-                        res.json(response[0])
+                        res.json(response[0][0])
                 })
             }
             else {
                 res.json("EMPTY")
             }
         },
-        insertOrUpdateRoom: (req, res) => {
-            if (isValidModel(req.body)) {
-                let data = req.body;
-                dbConnection.query(storeProcedureName().insertOrUpdateRoom(), [JSON.stringify(data.JInput),data.Action], (err, response) => {
-                    let resData = response[0]
-                    let returnId = resData[0].returnId
-                    let outputMessage = resData[0].outputMessage
-                    let model = new responseBaseModel(returnId, outputMessage=="SUCCESS"?true:false, outputMessage)
-                    if (err) res.json(err)
-                    res.json(model)
-                })
-            }
-            else {
-                res.json("Invalid model")
-            }
+        insertOrUpdateRoom: async (req, res) => {
+            let data = req.body;
+            const [url1, url2, url3] = await Promise.all([uploadImage(data.JInput.image1), uploadImage(data.JInput.image2), uploadImage(data.JInput.image3)]);
+            data.JInput.image1 = data.JInput.image2 = data.JInput.image3 = "";
+            data.JInput.image = url1+";"+url2+";"+url3;
+            console.log(data);
+            dbConnection.query(storeProcedureName().insertOrUpdateRoom(), [JSON.stringify(data.JInput),data.Action], (err, response) => {
+                let resData = response[0]
+                let returnId = resData[0].returnId
+                let outputMessage = resData[0].outputMessage
+                let model = new responseBaseModel(returnId, outputMessage=="SUCCESS"?true:false, outputMessage)
+                if (err) res.json(err)
+                res.json(model)
+            })
         },
         deleteRoom: (req, res) => {
             if (req.query.id > 0 ) {
@@ -103,6 +103,28 @@ const apiRoom= function (dbConnection) {
             }
         }
     }
+}
+
+const uploadImage = async (base64) => {
+    let url = "";
+    try {
+        if(base64.length==0) return url;
+        if(base64.startsWith("http")) return base64;
+        await cloudinary.uploader.upload(base64, {
+            resource_type: "image",
+            use_filename: "true",
+            folder: "ftro"
+        }, async function(error, result) {
+            if (error) console.log(error)
+            else {
+                console.log(result);
+                url = result.url;
+            }
+        });
+    } catch (err) {
+        console.error(err);
+    }
+    return url;
 }
 
 module.exports = apiRoom
