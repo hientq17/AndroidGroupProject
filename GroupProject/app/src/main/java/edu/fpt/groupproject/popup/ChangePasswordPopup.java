@@ -17,7 +17,43 @@ public class ChangePasswordPopup extends AppCompatDialogFragment {
 
     private EditText txtCurrentPassword;
     private EditText txtNewPassword;
+    private EditText txtConfirmPassword;
     private ChangePasswordPopupListener listener;
+    private String currentPassword, newPassword, confirmPassword;
+
+    public ChangePasswordPopup(){
+
+    }
+
+    public ChangePasswordPopup(String currentPassword, String newPassword, String confirmPassword){
+        this.currentPassword = currentPassword;
+        this.newPassword = newPassword;
+        this.confirmPassword = confirmPassword;
+    }
+
+    public String getCurrentPassword() {
+        return currentPassword;
+    }
+
+    public void setCurrentPassword(String currentPassword) {
+        this.currentPassword = currentPassword;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -37,14 +73,20 @@ public class ChangePasswordPopup extends AppCompatDialogFragment {
                 .setPositiveButton("Đổi ", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String currentPassword = txtCurrentPassword.getText().toString();
-                        String newPassword = txtNewPassword.getText().toString();
-                        listener.applyTextPassword(currentPassword, newPassword);
+                        String current = txtCurrentPassword.getText().toString();
+                        String newPass = txtNewPassword.getText().toString();
+                        String confirm = txtConfirmPassword.getText().toString();
+                        listener.applyTextPassword(current, newPass, confirm);
                     }
                 });
 
         txtCurrentPassword = view.findViewById(R.id.txtCurrentPassword);
         txtNewPassword = view.findViewById(R.id.txtNewPassword);
+        txtConfirmPassword = view.findViewById(R.id.txtConfirmPassword);
+
+        txtCurrentPassword.setText(this.currentPassword);
+        txtNewPassword.setText(this.newPassword);
+        txtConfirmPassword.setText(this.confirmPassword);
 
         return builder.create();
     }
@@ -62,6 +104,6 @@ public class ChangePasswordPopup extends AppCompatDialogFragment {
     }
 
     public interface ChangePasswordPopupListener {
-        void applyTextPassword(String currentPassword, String newPassword);
+        void applyTextPassword(String currentPassword, String newPassword, String confirmPassword);
     }
 }
