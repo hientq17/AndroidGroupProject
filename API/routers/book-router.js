@@ -15,4 +15,7 @@ module.exports = function (app, dbConnection) {
     app.route('/api/book/delete-book')
         .post(bookController(dbConnection).deleteBook);
         
+    app.route('/api/book/get-list-user-booking')
+        .get(bookController(dbConnection).getListUserBooking);
+        
 };

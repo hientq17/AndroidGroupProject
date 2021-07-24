@@ -101,7 +101,24 @@ const apiRoom= function (dbConnection) {
                 //res.json("EMPTY")
                 res.json(null)
             }
+        },
+        getSearchRoom: (req,res) => {
+            dbConnection.query(storeProcedureName().searchRoom(),[req.query.searchText], (err, response) => {
+                if (err) res.json(err)
+                else{
+                    console.log(response)
+                    if(response[0].length > 0)
+                         res.json(response[0])
+                    else
+                        //res.json("EMPTY")
+                        res.json([])
+                }
+            })
         }
+        // testFormFile:(req, res) => {
+        //     console.log(req.files)
+        //     res.json("1")
+        // }
     }
 }
 

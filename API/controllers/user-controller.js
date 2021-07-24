@@ -59,37 +59,41 @@ const apiUser= function (dbConnection) {
                 res.json("EMPTY")
             }
         },
-        // insertOrUpdateUser: (req, res) => {
-        //     if (isValidModel(req.body)) {
-        //         let data = req.body;
-        //         dbConnection.query(storeProcedureName().insertOrUpdateUser(), [JSON.stringify(data.JInput),data.Action], (err, response) => {
-        //             let resData = response[0]
-        //             let returnId = resData[0].returnId
-        //             let outputMessage = resData[0].outputMessage
-        //             let model = new responseBaseModel(returnId, outputMessage=="SUCCESS"?true:false, outputMessage)
-        //             if (err) res.json(err)
-        //             res.json(model)
-        //         })
-        //     }
-        //     else {
-        //         res.json("Invalid model")
-        //     }
-        // },
-        // deleteUser: (req, res) => {
-        //     if (req.query.id > 0 ) {
-        //         dbConnection.query(storeProcedureName().deleteUser(), [req.query.id], (err, response) => {
-        //             let resData = response[0]
-        //             let returnId = resData[0].returnId
-        //             let outputMessage = resData[0].outputMessage
-        //             let model = new responseBaseModel(returnId, outputMessage=="SUCCESS"?true:false, outputMessage)
-        //             if (err) res.json(err)
-        //             res.json(model)
-        //         })
-        //     }
-        //     else {
-        //         res.json("EMPTY")
-        //     }
-        // }
+        updateUserInfo:(req, res) => {
+            let data = req.body;
+            console.log(data)
+            if (data.username != null 
+                && data.name != null
+                && data.address != null
+                && data.phone != null) {
+                dbConnection.query(storeProcedureName().updateUserInfo(), [JSON.stringify(data)], (err, response) => {
+                    let resData = response[0]
+                    let returnId = resData[0].returnId
+                    let outputMessage = resData[0].outputMessage
+                    let model = new responseBaseModel(returnId, outputMessage=="SUCCESS"?true:false, outputMessage)
+                    console.log(model)
+                    if (err) res.json(err);
+                    else res.json(model)
+                })
+            }
+        },
+        changePassword:(req, res) => {
+            let data = req.body;
+            if (data.currentPassword != null && data.newPassword != null && data.username) {
+                
+                data.currentPassword = md5(data.currentPassword);
+                data.newPassword = md5(data.newPassword);
+                
+                dbConnection.query(storeProcedureName().changePassword(), [JSON.stringify(data)], (err, response) => {
+                    let resData = response[0]
+                    let returnId = resData[0].returnId
+                    let outputMessage = resData[0].outputMessage
+                    let model = new responseBaseModel(returnId, outputMessage=="SUCCESS"?true:false, outputMessage)
+                    if (err) res.json(err);
+                    else res.json(model)
+                })
+            }
+        }
     }
 }
 

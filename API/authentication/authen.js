@@ -16,7 +16,9 @@ const verifiedUrl = [
     "/api/book/get-list-books-by-room",
     "/api/book/get-book-by-id",
     "/api/book/insert-or-update-book",
-    "/api/book/delete-book"
+    "/api/book/delete-book",
+    "/api/user/update-user-info",
+    "/api/user/change-password"
 ]
 const jwtAuthentication = function authen(req, res, next) {
     if(verifiedAuthen(req)){

@@ -12,7 +12,6 @@ module.exports = function (app, dbConnection) {
     app.route('/api/room/get-list-booked-rooms-by-username')
         .get(roomController(dbConnection).getListBookedRoomsByUsername);
 
-
     app.route('/api/room/get-list-rooms-by-author')
         .get(roomController(dbConnection).getListRoomsByAuthor);
 
@@ -24,5 +23,10 @@ module.exports = function (app, dbConnection) {
 
     app.route('/api/room/delete-room')
         .post(roomController(dbConnection).deleteRoom);
+        
+    app.route('/api/room/search')
+        .get(roomController(dbConnection).getSearchRoom);
+    // app.route('/api/room/test-from-flie')
+    //     .post(roomController(dbConnection).testFormFile);
         
 };
