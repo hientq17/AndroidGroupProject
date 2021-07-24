@@ -31,7 +31,7 @@
         android:layout_marginRight="40dp"
         android:background="@drawable/edit_text_border"
         android:ems="10"
-        android:hint="Nhập địa chỉ cần tìm kiếm"
+        android:hint="Nhập thông tin cần tìm kiếm"
         android:inputType="textPersonName"
         android:paddingLeft="40dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/imgBtnSearchRoom"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="15dp"
@@ -50,7 +50,7 @@
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/filter_1" />
+        app:srcCompat="@drawable/loupe" />
 
     <TextView
         android:id="@+id/txtTotal"

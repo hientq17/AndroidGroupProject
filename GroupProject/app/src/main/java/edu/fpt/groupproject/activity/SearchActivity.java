@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -31,7 +32,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     List<Room> roomList;
     RoomAdapter roomAdapter;
     TextView txtTotal;
-    ImageButton imgBtnUser,imgBtnHome;
+    ImageButton imgBtnUser,imgBtnHome, imgBtnSearchRoom;
+    EditText txtSearch;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -44,6 +46,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         imgBtnUser.setOnClickListener(SearchActivity.this);
         imgBtnHome = findViewById(R.id.imgBtnHome);
         imgBtnHome.setOnClickListener(SearchActivity.this);
+        imgBtnSearchRoom = findViewById(R.id.imgBtnSearchRoom);
+        imgBtnSearchRoom.setOnClickListener(SearchActivity.this);
+        txtSearch = findViewById(R.id.txtSearch);
         getAllRooms();
     }
 
@@ -77,6 +82,35 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         });
     }
 
+    public void getListRoomSearch(String searchText){
+        //get list all rooms
+        Retrofit retrofit = new Retrofit.Builder() .baseUrl(SysConstant.BaseURL)
+                .addConverterFactory(GsonConverterFactory.create()) .build();
+        IRoomApi roomApi = retrofit.create(IRoomApi.class);
+        roomApi.getListRoomSearch(searchText).enqueue(new Callback<List<Room>>() {
+            @Override
+            public void onResponse(Call<List<Room>> call, Response<List<Room>> response) {
+                Log.e("TESTT",response.body().toString());
+                txtTotal.setText(response.body().size()+" kết quả được tìm thấy");
+                roomList = response.body();
+                //create recyclerview
+                recyclerView = (RecyclerView) findViewById(R.id.listRooms);
+                roomAdapter = new RoomAdapter(roomList,SearchActivity.this);
+                recyclerView.setAdapter(roomAdapter);
+                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                recyclerView.setLayoutManager(mLayoutManager);
+                roomAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onFailure(Call<List<Room>> call, Throwable t) {
+                try {
+                    throw t;
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+            }
+        });
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -92,6 +126,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.imgBtnHome:
                 Intent intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.imgBtnSearchRoom:
+                recyclerView.setAdapter(null);
+                getListRoomSearch(txtSearch.getText().toString());
                 break;
         }
     }

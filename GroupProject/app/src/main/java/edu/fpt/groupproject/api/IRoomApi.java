@@ -33,4 +33,6 @@ public interface IRoomApi {
     Call<Room> getRoomById(@Query("id") int id);
     @POST("/api/room/delete-room")
     Call<ReturnModel> deleteRoom(@Query("id") int id, @Query("token") String token);
+    @GET("/api/room/search")
+    Call<List<Room>> getListRoomSearch(@Query("searchText") String searchText);
 }
