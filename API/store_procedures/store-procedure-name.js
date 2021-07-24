@@ -1,5 +1,3 @@
-'use strict'
-
 const storeProcedureName = function () {
     return {
         //Room
@@ -72,6 +70,18 @@ const storeProcedureName = function () {
         },
         deleteInbox: () => {
             return 'Call deleteInbox(?)'
+        },
+        updateUserInfo: () => {
+            return 'Call updateUserInfo(?)'
+        },
+        changePassword:() => {
+            return 'Call changePassword(?)'
+        },
+        searchRoom:() => {
+            return 'Call searchRoom(?)'
+        },
+        getListUserBooking:() => {
+            return 'Call getListUserBooking(?)'
         }
     }
 }

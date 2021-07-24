@@ -63,6 +63,17 @@ const apiBook= function (dbConnection) {
             else {
                 res.json("EMPTY")
             }
+        },
+        getListUserBooking: (req, res) => {
+            dbConnection.query(storeProcedureName().getListUserBooking(),[req.query.roomId], (err, response) => {
+                if (err) res.json(err)
+                else{
+                    if(response[0].length > 0)
+                         res.json(response[0])
+                    else
+                        res.json("EMPTY")
+                }
+            })
         }
     }
 }
