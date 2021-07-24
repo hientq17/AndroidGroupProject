@@ -51,7 +51,6 @@ public class ListUserBookingPopup extends AppCompatDialogFragment implements Vie
     TextView txtPhoneNumber;
     TextView txtTime;
     TextView txtTotal;
-    ImageButton imgBtnCall;
     List<UserBooking> list = new ArrayList<>();;
     SharedPreferences sharedPreferences;
     RecyclerView recyclerView;
@@ -76,7 +75,6 @@ public class ListUserBookingPopup extends AppCompatDialogFragment implements Vie
         txtPhoneNumber = view.findViewById(R.id.txtPhoneNumber);
         txtTime = view.findViewById(R.id.txtTime);
         txtTotal = view.findViewById(R.id.txtTotal);
-        imgBtnCall = view.findViewById(R.id.imgBtnCall);
         getListUserBooking(getArguments().getInt("roomId"), view);
 
         return builder.create();
