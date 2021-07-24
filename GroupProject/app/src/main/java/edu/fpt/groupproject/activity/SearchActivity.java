@@ -103,6 +103,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onFailure(Call<List<Room>> call, Throwable t) {
                 try {
+                    Log.e("ERRORR",t.toString());
                     throw t;
                 } catch (Throwable throwable) {
                     throwable.printStackTrace();
